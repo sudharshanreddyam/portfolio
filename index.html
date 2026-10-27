@@ -11,27 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#F3F5F7;
-    --surface:#FFFFFF;
-    --ink:#12181F;
-    --muted:#5B6670;
-    --line:#D7DEE4;
-    --accent:#2F5EFF;
-    --accent-soft:#E7ECFF;
-    --sidebar-w:300px;
-  }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --bg:#0E1116;
-      --surface:#151A21;
-      --ink:#EAEEF2;
-      --muted:#8C98A4;
-      --line:#262E38;
-      --accent:#6E8CFF;
-      --accent-soft:#1B2340;
-    }
-  }
-  :root[data-theme="dark"]{
+    /* Dark is the default look for this page */
     --bg:#0E1116;
     --surface:#151A21;
     --ink:#EAEEF2;
@@ -39,6 +19,16 @@
     --line:#262E38;
     --accent:#6E8CFF;
     --accent-soft:#1B2340;
+    --sidebar-w:300px;
+  }
+  :root[data-theme="light"]{
+    --bg:#F3F5F7;
+    --surface:#FFFFFF;
+    --ink:#12181F;
+    --muted:#5B6670;
+    --line:#D7DEE4;
+    --accent:#2F5EFF;
+    --accent-soft:#E7ECFF;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -68,6 +58,15 @@
     height:100vh;
     display:flex;
     flex-direction:column;
+  }
+  .sb-avatar{
+    width:76px;
+    height:76px;
+    border-radius:50%;
+    object-fit:cover;
+    border:2px solid var(--line);
+    margin-bottom:18px;
+    display:block;
   }
   .sb-name{
     font-family:'Space Grotesk', sans-serif;
@@ -308,6 +307,19 @@
       border-bottom:1px solid var(--line);
       padding:16px 20px;
     }
+    .mb-id{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .mb-avatar{
+      width:32px;
+      height:32px;
+      border-radius:50%;
+      object-fit:cover;
+      border:1px solid var(--line);
+      display:block;
+    }
     .mobile-bar .mb-name{
       font-family:'Space Grotesk', sans-serif;
       font-weight:700;
@@ -331,13 +343,17 @@
 <body>
 
 <div class="mobile-bar">
-  <span class="mb-name">Sudharshan Reddyam</span>
+  <span class="mb-id">
+    <img class="mb-avatar" src="img/headshot.jpg" alt="Portrait of Sudharshan Reddyam" width="32" height="32">
+    <span class="mb-name">Sudharshan Reddyam</span>
+  </span>
   <button id="themeToggleMobile" type="button">Theme</button>
 </div>
 
 <div class="layout">
 
   <aside class="sidebar" aria-label="Primary">
+    <img class="sb-avatar" src="img/headshot.jpg" alt="Portrait of Sudharshan Reddyam" width="76" height="76">
     <div class="sb-name">Sudharshan Reddyam</div>
     <p class="sb-role">Full Stack Engineering Leader<br>Frisco, TX</p>
     <hr class="sb-accent-rule">
@@ -353,7 +369,7 @@
       <a href="https://linkedin.com/in/sudharshanredyam" target="_blank" rel="noopener">linkedin.com/in/sudharshanredyam</a>
       <a href="https://github.com/sudharshanreddyam" target="_blank" rel="noopener">github.com/sudharshanreddyam</a>
     </div>
-    <button class="theme-toggle" id="themeToggleDesktop" type="button">Switch to dark</button>
+    <button class="theme-toggle" id="themeToggleDesktop" type="button">Switch to light</button>
   </aside>
 
   <main>
@@ -525,14 +541,15 @@
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Theme toggle (persisted per-viewer only; safe no-op if storage blocked)
+  // Theme toggle. Dark is the page default; "light" is the only explicit
+  // override, persisted per-viewer only (safe no-op if storage is blocked).
   function applyTheme(mode){
-    if(mode === 'light' || mode === 'dark'){
-      document.documentElement.setAttribute('data-theme', mode);
+    if(mode === 'light'){
+      document.documentElement.setAttribute('data-theme', 'light');
     } else {
       document.documentElement.removeAttribute('data-theme');
     }
-    var label = mode === 'dark' ? 'Switch to light' : 'Switch to dark';
+    var label = mode === 'light' ? 'Switch to dark' : 'Switch to light';
     var btn1 = document.getElementById('themeToggleDesktop');
     if(btn1) btn1.textContent = label;
   }
@@ -541,7 +558,7 @@
   }
   function toggleTheme(){
     var mode = currentMode();
-    var next = mode === 'dark' ? 'light' : (mode === 'light' ? null : 'dark');
+    var next = mode === 'light' ? null : 'light';
     try {
       if(next){ localStorage.setItem('theme', next); } else { localStorage.removeItem('theme'); }
     } catch(e){}
