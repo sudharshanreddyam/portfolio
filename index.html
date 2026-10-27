@@ -1,353 +1,576 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sudharshan Redyam - Full Stack Developer</title>
-<meta name="description" content="">
-<meta name="author" content="">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sudharshan Reddyam — Full Stack Engineering Leader</title>
+<meta name="description" content="Sudharshan Reddyam — Full Stack Engineering Leader. 13+ years building and scaling web platforms across frontend, backend and cloud." />
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F3F5F7;
+    --surface:#FFFFFF;
+    --ink:#12181F;
+    --muted:#5B6670;
+    --line:#D7DEE4;
+    --accent:#2F5EFF;
+    --accent-soft:#E7ECFF;
+    --sidebar-w:300px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0E1116;
+      --surface:#151A21;
+      --ink:#EAEEF2;
+      --muted:#8C98A4;
+      --line:#262E38;
+      --accent:#6E8CFF;
+      --accent-soft:#1B2340;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0E1116;
+    --surface:#151A21;
+    --ink:#EAEEF2;
+    --muted:#8C98A4;
+    --line:#262E38;
+    --accent:#6E8CFF;
+    --accent-soft:#1B2340;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
 
-<!-- Favicons
-    ================================================== -->
-<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-<link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png">
+  .layout{display:flex;max-width:1200px;margin:0 auto;min-height:100vh;}
 
-<!-- Bootstrap -->
-<link rel="stylesheet" type="text/css"  href="css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="fonts/font-awesome/css/font-awesome.css">
+  /* ---------- Sidebar ---------- */
+  .sidebar{
+    width:var(--sidebar-w);
+    flex-shrink:0;
+    padding:56px 36px 36px;
+    border-right:1px solid var(--line);
+    position:sticky;
+    top:0;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+  }
+  .sb-name{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size:1.55rem;
+    letter-spacing:-0.01em;
+    margin:0 0 6px;
+  }
+  .sb-role{
+    color:var(--muted);
+    font-size:0.92rem;
+    margin:0 0 18px;
+    line-height:1.45;
+  }
+  .sb-accent-rule{
+    width:40px;height:3px;background:var(--accent);border:0;margin:0 0 22px;border-radius:1px;
+  }
+  .sb-nav{list-style:none;margin:0 0 auto;padding:0;}
+  .sb-nav li{margin-bottom:2px;}
+  .sb-nav a{
+    display:flex;
+    gap:10px;
+    align-items:baseline;
+    color:var(--ink);
+    font-size:0.9rem;
+    padding:7px 8px;
+    border-radius:4px;
+    text-decoration:none;
+  }
+  .sb-nav a:hover{background:var(--accent-soft);text-decoration:none;}
+  .sb-nav a.active{color:var(--accent);font-weight:500;}
+  .sb-nav .idx{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    color:var(--muted);
+    width:16px;
+  }
+  .sb-nav a.active .idx{color:var(--accent);}
+  .sb-contact{
+    padding-top:20px;
+    border-top:1px solid var(--line);
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .sb-contact a{
+    font-size:0.86rem;
+    color:var(--muted);
+  }
+  .sb-contact a:hover{color:var(--accent);}
+  .theme-toggle{
+    margin-top:18px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    color:var(--muted);
+    background:none;
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:6px 10px;
+    cursor:pointer;
+    width:fit-content;
+  }
+  .theme-toggle:hover{border-color:var(--accent);color:var(--accent);}
 
-<!-- Stylesheet
-    ================================================== -->
-<link rel="stylesheet" type="text/css"  href="css/style.css">
-<link rel="stylesheet" type="text/css" href="css/prettyPhoto.css">
-<link href='http://fonts.googleapis.com/css?family=Lato:400,700,900,300' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800,600,300' rel='stylesheet' type='text/css'>
-<script type="text/javascript" src="js/modernizr.custom.js"></script>
+  /* ---------- Mobile top bar ---------- */
+  .mobile-bar{display:none;}
 
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+  /* ---------- Main ---------- */
+  main{flex:1;min-width:0;padding:56px 56px 80px;}
+
+  .hero{margin-bottom:56px;}
+  .hero h1{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:clamp(2rem, 3.6vw, 2.75rem);
+    line-height:1.12;
+    letter-spacing:-0.015em;
+    margin:0 0 14px;
+    max-width:14ch;
+  }
+  .hero p.lede{
+    color:var(--muted);
+    font-size:1.05rem;
+    max-width:62ch;
+    margin:0 0 30px;
+  }
+  .stats{
+    display:flex;
+    flex-wrap:wrap;
+    gap:34px;
+    padding-top:26px;
+    border-top:1px solid var(--line);
+  }
+  .stat .n{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:1.5rem;
+    color:var(--accent);
+    display:block;
+  }
+  .stat .l{
+    font-size:0.82rem;
+    color:var(--muted);
+  }
+
+  section{margin-bottom:60px;scroll-margin-top:30px;}
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    margin-bottom:22px;
+  }
+  .section-head h2{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:1.3rem;
+    margin:0;
+    font-weight:600;
+  }
+  .section-head .rule{
+    flex:1;
+    height:1px;
+    background:var(--line);
+  }
+
+  .summary p{max-width:72ch;color:var(--ink);}
+
+  /* ---------- Timeline ---------- */
+  .timeline{position:relative;padding-left:26px;}
+  .timeline::before{
+    content:"";
+    position:absolute;
+    left:5px;top:6px;bottom:6px;
+    width:1px;
+    background:var(--line);
+  }
+  .tl-item{position:relative;padding-bottom:34px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{
+    content:"";
+    position:absolute;
+    left:-26px;top:5px;
+    width:9px;height:9px;
+    border-radius:50%;
+    background:var(--surface);
+    border:2px solid var(--accent);
+  }
+  .tl-head{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    gap:8px 20px;
+    margin-bottom:3px;
+  }
+  .tl-role{font-weight:600;font-size:1.02rem;}
+  .tl-date{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    color:var(--muted);
+    white-space:nowrap;
+  }
+  .tl-org{
+    color:var(--muted);
+    font-size:0.92rem;
+    margin:0 0 10px;
+  }
+  .tl-item ul{margin:0 0 10px;padding-left:18px;}
+  .tl-item li{margin-bottom:5px;font-size:0.94rem;}
+  .tl-stack{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.74rem;
+    color:var(--muted);
+    line-height:1.7;
+  }
+
+  /* ---------- Skills ---------- */
+  .skill-group{margin-bottom:18px;}
+  .skill-group h3{
+    font-size:0.85rem;
+    font-weight:600;
+    margin:0 0 10px;
+    color:var(--muted);
+  }
+  .tags{display:flex;flex-wrap:wrap;gap:8px;}
+  .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.76rem;
+    padding:5px 10px;
+    border:1px solid var(--line);
+    border-radius:4px;
+    color:var(--ink);
+    background:var(--surface);
+  }
+
+  /* ---------- Certs / Education ---------- */
+  .flat-list{list-style:none;margin:0;padding:0;}
+  .flat-list li{
+    display:flex;
+    justify-content:space-between;
+    gap:16px;
+    padding:12px 0;
+    border-bottom:1px solid var(--line);
+    font-size:0.95rem;
+  }
+  .flat-list li:last-child{border-bottom:0;}
+  .flat-list .meta{color:var(--muted);font-size:0.86rem;font-family:'IBM Plex Mono', monospace;white-space:nowrap;}
+
+  /* ---------- Contact ---------- */
+  .contact-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:4px;}
+  .contact-row a{
+    font-size:0.92rem;
+    padding:9px 16px;
+    border:1px solid var(--line);
+    border-radius:4px;
+    color:var(--ink);
+  }
+  .contact-row a:hover{border-color:var(--accent);color:var(--accent);text-decoration:none;}
+  .contact-row a.primary{background:var(--accent);border-color:var(--accent);color:#fff;}
+  .contact-row a.primary:hover{opacity:0.9;color:#fff;}
+
+  footer{
+    border-top:1px solid var(--line);
+    padding-top:22px;
+    font-size:0.8rem;
+    color:var(--muted);
+  }
+
+  @media (max-width:860px){
+    .layout{flex-direction:column;}
+    .sidebar{
+      display:none;
+    }
+    .mobile-bar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      position:sticky;
+      top:0;
+      z-index:10;
+      background:var(--bg);
+      border-bottom:1px solid var(--line);
+      padding:16px 20px;
+    }
+    .mobile-bar .mb-name{
+      font-family:'Space Grotesk', sans-serif;
+      font-weight:700;
+      font-size:1.05rem;
+    }
+    .mobile-bar button{
+      font-family:'IBM Plex Mono', monospace;
+      font-size:0.75rem;
+      background:none;
+      border:1px solid var(--line);
+      border-radius:4px;
+      padding:6px 10px;
+      color:var(--ink);
+    }
+    main{padding:36px 22px 60px;}
+    .hero h1{max-width:none;}
+    .stats{gap:22px;}
+  }
+</style>
 </head>
-<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<body>
 
-<!-- Header -->
-<header id="header">
-  <div class="intro text-center">
-    <div class="overlay">
-      <div class="container">
-        <div class="row">
-          <div class="intro-text">
-            <h1>Sudharshan Redyam</h1>
-            <p>Full Stack Developer</p>
-            <a href="#about" class="btn btn-default btn-lg page-scroll">More About Me</a> 
-            <a target="_blank" href="https://sudharshanreddyam.github.io/aboutme/" class="btn btn-default btn-lg page-scroll">View Resume</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</header>
-<!-- Navigation -->
-<div id="nav">
-  <nav class="navbar navbar-custom">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse"> <i class="fa fa-bars"></i> </button>
-      </div>
-      
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse navbar-main-collapse">
-        <ul class="nav navbar-nav">
-          <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-          <li class="hidden"> <a href="#page-top"></a> </li>
-          <li> <a class="page-scroll" href="#page-top">Home</a> </li>
-          <li> <a class="page-scroll" href="#about">About</a> </li>
-          <li> <a class="page-scroll" href="#skills">Skills</a> </li>
-          <li> <a class="page-scroll" href="#portfolio">Portfolio</a> </li>
-          <li> <a class="page-scroll" href="#contact">Contact</a> </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+<div class="mobile-bar">
+  <span class="mb-name">Sudharshan Reddyam</span>
+  <button id="themeToggleMobile" type="button">Theme</button>
 </div>
-<!-- About Section -->
-<div id="about">
-  <div class="container">
-    <div class="section-title text-center center">
-      <h2>About Me</h2>
-      <hr>
+
+<div class="layout">
+
+  <aside class="sidebar" aria-label="Primary">
+    <div class="sb-name">Sudharshan Reddyam</div>
+    <p class="sb-role">Full Stack Engineering Leader<br>Frisco, TX</p>
+    <hr class="sb-accent-rule">
+    <ul class="sb-nav" id="sideNav">
+      <li><a href="#summary"><span class="idx">01</span>Summary</a></li>
+      <li><a href="#experience"><span class="idx">02</span>Experience</a></li>
+      <li><a href="#skills"><span class="idx">03</span>Skills</a></li>
+      <li><a href="#credentials"><span class="idx">04</span>Credentials</a></li>
+      <li><a href="#contact"><span class="idx">05</span>Contact</a></li>
+    </ul>
+    <div class="sb-contact">
+      <a href="mailto:sudharshan.ui@gmail.com">sudharshan.ui@gmail.com</a>
+      <a href="https://linkedin.com/in/sudharshanredyam" target="_blank" rel="noopener">linkedin.com/in/sudharshanredyam</a>
+      <a href="https://github.com/sudharshanreddyam" target="_blank" rel="noopener">github.com/sudharshanreddyam</a>
     </div>
-    <div class="row">
-      <div class="col-xs-12 col-md-6"> <img src="img/instaCam2R.jpg" class="img-responsive" alt=""> </div>
-      <div class="col-xs-12 col-md-6">
-        <div class="about-text">
-          <p>I'm a full stack developer. I'm passionate in doing End to End application development. Love to learn new trends in technologies.</p>
-          <a href="#portfolio" class="btn btn-primary btn-lg page-scroll">My Portfolio</a> </div>
+    <button class="theme-toggle" id="themeToggleDesktop" type="button">Switch to dark</button>
+  </aside>
+
+  <main>
+    <section class="hero" id="top">
+      <h1>Building the software that runs real systems, and the teams that build it.</h1>
+      <p class="lede">13+ years designing, building and scaling web platforms across frontend, backend and cloud — from leading an 8-engineer frontend team to architecting real-time, event-driven systems at Fidelity, Google and Ericsson.</p>
+      <div class="stats">
+        <div class="stat"><span class="n">13+</span><span class="l">years in engineering</span></div>
+        <div class="stat"><span class="n">8</span><span class="l">engineers led directly</span></div>
+        <div class="stat"><span class="n">12</span><span class="l">companies &amp; platforms shipped</span></div>
+        <div class="stat"><span class="n">React / Angular / Node</span><span class="l">primary stack</span></div>
       </div>
-    </div>
-  </div>
-</div>
-<!-- Skills Section -->
-<div id="skills" class="text-center">
-  <div class="container">
-    <div class="section-title center">
-      <h2>Skills</h2>
-      <hr>
-    </div>
-    <div class="row">
-      <div class="col-md-3 col-sm-6 skill"> <span class="chart" data-percent="95"> <span class="percent">95</span> </span>
-        <h4>HTML5</h4>
+    </section>
+
+    <section id="summary">
+      <div class="section-head"><h2>Summary</h2><div class="rule"></div></div>
+      <div class="summary">
+        <p>Full stack engineering leader with experience designing, building, and scaling web platforms across frontend, backend, and cloud layers. Directed a frontend development team of 8 engineers at Walmart and mentored engineers across multiple organizations, while remaining a hands-on individual contributor in architecture, code, and delivery. Deep expertise in TypeScript, React, and Angular on the frontend, paired with Node.js and Java Spring Boot backend systems, RESTful/GraphQL APIs, and event-driven, real-time architectures — Kafka, WebSocket, RabbitMQ — that connect user-facing applications to distributed and third-party systems. Comfortable partnering closely with product, backend, and infrastructure teams, driving the full software development lifecycle in Agile/Scrum environments.</p>
       </div>
-      <div class="col-md-3 col-sm-6 skill"> <span class="chart" data-percent="85"> <span class="percent">85</span> </span>
-        <h4>CSS3</h4>
-      </div>
-      <div class="col-md-3 col-sm-6 skill"> <span class="chart" data-percent="80"> <span class="percent">80</span> </span>
-        <h4>Javascript</h4>
-      </div>
-      <div class="col-md-3 col-sm-6 skill"> <span class="chart" data-percent="80"> <span class="percent">80</span> </span>
-        <h4>AngularJS</h4>
-      </div>
-       <div class="col-md-3 col-sm-6 skill"> <span class="chart" data-percent="65"> <span class="percent">65</span> </span>
-        <h4>NodeJS</h4>
-      </div>
-      <div class="col-md-3 col-sm-6 skill"> <span class="chart" data-percent="60"> <span class="percent">60</span> </span>
-        <h4>Go-Lang</h4>
-      </div>
-      <div class="col-md-3 col-sm-6 skill"> <span class="chart" data-percent="80"> <span class="percent">80</span> </span>
-        <h4>Ionic2</h4>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Portfolio Section -->
-<div id="portfolio">
-  <div class="container">
-    <div class="section-title text-center center">
-      <h2>Portfolio</h2>
-      <hr>
-    </div>
-    <div class="categories">
-      <ul class="cat">
-        <li>
-          <ol class="type">
-            <li><a href="#" data-filter="*" class="active">All</a></li>
-            <li><a href="#" data-filter=".web">Web Design</a></li>
-            <li><a href="#" data-filter=".app">App Development</a></li>
-            <li><a href="#" data-filter=".gaming">Game Development</a></li>
-          </ol>
-        </li>
-      </ul>
-      <div class="clearfix"></div>
-    </div>
-    <div class="row">
-      <div class="portfolio-items">
-        <div class="col-sm-6 col-md-3 col-lg-3 web">
-          <div class="portfolio-item">
-            <div class="hover-bg"> <a href="img/portfolio/Kantar.png" title="Project description" rel="prettyPhoto">
-              <div class="hover-text">
-                <h4>Kantar Operations</h4>
-                <small>Web Design</small> </div>
-              <img src="img/portfolio/Kantar.png" class="img-responsive" alt="Project Title"> </a> </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-3 col-lg-3 web">
-          <div class="portfolio-item">
-            <div class="hover-bg"> <a href="img/portfolio/cambridge-university-press.png" title="Project description" rel="prettyPhoto">
-              <div class="hover-text">
-                <h4>Cambridge University Press</h4>
-                <small>E-Learning Courses</small> </div>
-              <img src="img/portfolio/cambridge-university-press.png" class="img-responsive" alt="Project Title"> </a> </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-3 col-lg-3 app">
-          <div class="portfolio-item">
-            <div class="hover-bg"> <a href="img/portfolio/pobyt.png" title="Project description" rel="prettyPhoto">
-              <div class="hover-text">
-                <h4>Pobyt - Short Stays</h4>
-                <small>App Development</small> </div>
-              <img src="img/portfolio/pobyt.png" class="img-responsive" alt="Project Title"> </a> </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-3 col-lg-3 app">
-          <div class="portfolio-item">
-            <div class="hover-bg"> <a href="img/portfolio/allergan-logo.png" title="Project description" rel="prettyPhoto">
-              <div class="hover-text">
-                <h4>Allergan Pharma</h4>
-                <small>App Development</small> </div>
-              <img src="img/portfolio/allergan-logo.png" class="img-responsive" alt="Project Title"> </a> </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-3 col-lg-3 gaming">
-          <div class="portfolio-item">
-            <div class="hover-bg"> <a href="img/portfolio/full-moon-fever-animals.png" title="Project description" rel="prettyPhoto">
-              <div class="hover-text">
-                <h4>Full Moon Fever</h4>
-                <small>Game Developement</small> </div>
-              <img src="img/portfolio/full-moon-fever-bwinparty-slot-1214.jpg" class="img-responsive" alt="Project Title"> </a> </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-3 col-lg-3 gaming">
-          <div class="portfolio-item">
-            <div class="hover-bg"> <a href="img/portfolio/the-weather-man-bonus.png" title="Project description" rel="prettyPhoto">
-              <div class="hover-text">
-                <h4>The Weather Man</h4>
-                <small>Game Development</small> </div>
-              <img src="img/portfolio/WeatherManLogo.jpeg" class="img-responsive" alt="Project Title"> </a> </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-3 col-lg-3 web">
-          <div class="portfolio-item">
-            <div class="hover-bg"> <a href="img/portfolio/Cherryrush_App_icon_Bwin.png" title="Project description" rel="prettyPhoto">
-              <div class="hover-text">
-                <h4>BWIN</h4>
-                <small>Web Design</small> </div>
-              <img src="img/portfolio/Cherryrush_App_icon_Bwin.png" class="img-responsive" alt="Project Title"> </a> </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Achievements Section 
-<div id="achievements" class="text-center">
-  <div class="container">
-    <div class="section-title center">
-      <h2>Some Stats</h2>
-      <hr>
-    </div>
-    <div class="row">
-      <div class="col-md-3 col-sm-3 wow fadeInDown" data-wow-delay="200ms">
-        <div class="achievement-box"> <span class="count">310</span>
-          <h4>Happy Clients</h4>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-3 wow fadeInDown" data-wow-delay="400ms">
-        <div class="achievement-box"> <span class="count">4700</span>
-          <h4>Hours of Work</h4>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-3 wow fadeInDown" data-wow-delay="600ms">
-        <div class="achievement-box"> <span class="count">30</span>
-          <h4>Awards Won</h4>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-3 wow fadeInDown" data-wow-delay="800ms">
-        <div class="achievement-box"> <span class="count">8</span>
-          <h4>Years of Experience</h4>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>-->
-<!-- Testimonials Section 
-<div id="testimonials" class="text-center">
-  <div class="container">
-    <div class="section-title center">
-      <h2>Testimonials</h2>
-      <hr>
-    </div>
-    <div class="row">
-      <div class="col-md-10 col-md-offset-1">
-        <div class="row testimonials">
-          <div class="col-sm-4">
-            <blockquote><i class="fa fa-quote-left"></i>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elitduis sed dapibus leo nec ornare.</p>
-              <div class="clients-name">
-                <p><strong>John Doe</strong><br>
-                  <em>CEO, Company Inc.</em></p>
-              </div>
-            </blockquote>
-          </div>
-          <div class="col-sm-4">
-            <blockquote><i class="fa fa-quote-left"></i>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elitduis sed dapibus leo nec ornare.</p>
-              <div class="clients-name">
-                <p><strong>Jane Doe</strong><br>
-                  <em>CEO, Company Inc.</em></p>
-              </div>
-            </blockquote>
-          </div>
-          <div class="col-sm-4">
-            <blockquote><i class="fa fa-quote-left"></i>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elitduis sed dapibus leo nec ornare.</p>
-              <div class="clients-name">
-                <p><strong>Chris Smith</strong><br>
-                  <em>CEO, Company Inc.</em></p>
-              </div>
-            </blockquote>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>-->
-<!-- Contact Section -->
-<div id="contact" class="text-center">
-  <div class="overlay">
-    <div class="container">
-      <div class="section-title center">
-        <h2>Get In Touch</h2>
-        <hr>
-      </div>
-      <div class="col-md-8 col-md-offset-2">
-        <form name="sentMessage" id="contactForm" novalidate>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <input type="text" id="name" class="form-control" placeholder="Name" required="required">
-                <p class="help-block text-danger"></p>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <input type="email" id="email" class="form-control" placeholder="Email" required="required">
-                <p class="help-block text-danger"></p>
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <textarea name="message" id="message" class="form-control" rows="4" placeholder="Message" required></textarea>
-            <p class="help-block text-danger"></p>
-          </div>
-          <div id="success"></div>
-          <button type="submit" class="btn btn-default">Send Message</button>
-        </form>
-        <div class="social">
+    </section>
+
+    <section id="experience">
+      <div class="section-head"><h2>Experience</h2><div class="rule"></div></div>
+      <div class="timeline">
+
+        <div class="tl-item">
+          <div class="tl-head"><span class="tl-role">Full Stack Engineer — Technical Lead Contributor</span><span class="tl-date">Oct 2023 — Present</span></div>
+          <p class="tl-org">Fidelity Investments, Frisco, TX</p>
           <ul>
-            <li><a href="https://www.facebook.com/ursudharshan"><i class="fa fa-facebook"></i></a></li>
-            <li><a href="https://twitter.com/Rsudharshan"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="https://stackoverflow.com/users/4753479/sudharshan-reddyam"><i class="fa fa-stack-overflow"></i></a></li>
-            <li><a href="https://github.com/sudharshanreddyam"><i class="fa fa-github"></i></a></li>
-            <li><a href="https://www.instagram.com/sudharshanreddyam/"><i class="fa fa-instagram"></i></a></li>
-            <li><a href="https://www.linkedin.com/in/sudharshan-redyam-70806316/"><i class="fa fa-linkedin"></i></a></li>
+            <li>Hands-on technical lead on enterprise applications, architecting solutions in Angular 19 and an NX monorepo while guiding frontend standards for the team.</li>
+            <li>Built GraphQL APIs and NestJS/Spring Boot services for B2B partner integrations.</li>
+            <li>Stood up Jenkins/Groovy CI/CD pipelines and Splunk observability dashboards; implemented Kafka for real-time, event-driven messaging.</li>
           </ul>
+          <p class="tl-stack">Angular 19 · NX Monorepo · Java · Spring Boot · NestJS · GraphQL · Kafka · Jenkins · Splunk</p>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-head"><span class="tl-role">Senior Software Engineer — Full Stack</span><span class="tl-date">Apr 2023 — Sep 2023</span></div>
+          <p class="tl-org">American Tire Distributors, Charlotte, NC</p>
+          <ul>
+            <li>Owned architecture for Angular 14+ applications on a Java Spring Boot backend, end to end.</li>
+            <li>Raised code quality through Jest/JUnit test coverage and enforced clean-code practices via review and mentoring.</li>
+          </ul>
+          <p class="tl-stack">Angular 14+ · Java · Spring Boot · REST · Jest · JUnit · AWS</p>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-head"><span class="tl-role">Senior Software Engineer — MEAN Stack</span><span class="tl-date">Oct 2020 — Mar 2023</span></div>
+          <p class="tl-org">Google, Flow Maker Project</p>
+          <ul>
+            <li>Built enterprise-scale Angular applications with NgRx state management for large, long-lived codebases.</li>
+            <li>Designed Node.js/Express microservices on Docker and Kubernetes with RabbitMQ for async service communication.</li>
+          </ul>
+          <p class="tl-stack">Angular · NgRx · Node.js · Docker · Kubernetes · RabbitMQ · Kafka · AWS</p>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-head"><span class="tl-role">Senior Software Engineer</span><span class="tl-date">Oct 2019 — Sep 2020</span></div>
+          <p class="tl-org">Google, BizApps Project</p>
+          <ul>
+            <li>Designed Node.js/Express microservices and configured AWS Lambda/API Gateway for serverless request handling.</li>
+          </ul>
+          <p class="tl-stack">Angular · TypeScript · Node.js · AWS Lambda · API Gateway</p>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-head"><span class="tl-role">Senior Software Engineer</span><span class="tl-date">Dec 2018 — Sep 2019</span></div>
+          <p class="tl-org">Ericsson MediaKind, TV Platforms &amp; Media</p>
+          <ul>
+            <li>Implemented SSO/JWT authentication and closed CSRF/XSS/DOS vulnerabilities on media platform applications.</li>
+          </ul>
+          <p class="tl-stack">TypeScript · Node.js · Backbone.js · Sass</p>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-head"><span class="tl-role">Senior Software Engineer</span><span class="tl-date">Nov 2016 — Nov 2018</span></div>
+          <p class="tl-org">bwin.com</p>
+          <ul>
+            <li>Architected integration patterns for a casino gaming platform, bringing multiple third-party games onto the host platform over persistent WebSocket connections.</li>
+          </ul>
+          <p class="tl-stack">AngularJS · Node.js · WebSocket</p>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-head"><span class="tl-role">Senior Software Engineer — Lead Developer</span><span class="tl-date">Jan 2017 — Sep 2017</span></div>
+          <p class="tl-org">pobyt.co</p>
+          <ul>
+            <li>Architected and built a hotel-booking mobile app end to end, integrating Maps, push notifications and multiple payment gateways.</li>
+          </ul>
+          <p class="tl-stack">Ionic 2 · Angular 2 · TypeScript · Firebase</p>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-head"><span class="tl-role">Project Lead</span><span class="tl-date">Apr 2012 — Sep 2015</span></div>
+          <p class="tl-org">Walmart, E-Survey Platform</p>
+          <ul>
+            <li>Led a frontend development team of 8 engineers, owning sprint priorities, resource allocation and release quality.</li>
+            <li>Delivered an enterprise survey platform on the Dimensions framework supporting business-intelligence workflows.</li>
+          </ul>
+          <p class="tl-stack">jQuery · Dimensions · CI/CD</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="section-head"><h2>Skills</h2><div class="rule"></div></div>
+
+      <div class="skill-group">
+        <h3>Frontend</h3>
+        <div class="tags">
+          <span class="tag">TypeScript</span><span class="tag">React</span><span class="tag">Angular 19</span>
+          <span class="tag">RxJS</span><span class="tag">NgRx</span><span class="tag">Redux Toolkit</span>
+          <span class="tag">Tailwind CSS</span><span class="tag">SCSS</span>
         </div>
       </div>
-    </div>
-  </div>
+      <div class="skill-group">
+        <h3>Backend</h3>
+        <div class="tags">
+          <span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">NestJS</span>
+          <span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">GraphQL</span>
+          <span class="tag">REST APIs</span><span class="tag">Microservices</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Data &amp; cloud</h3>
+        <div class="tags">
+          <span class="tag">MongoDB</span><span class="tag">MySQL</span><span class="tag">AWS</span>
+          <span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">Firebase</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Systems &amp; delivery</h3>
+        <div class="tags">
+          <span class="tag">Kafka</span><span class="tag">WebSocket</span><span class="tag">RabbitMQ</span>
+          <span class="tag">Jenkins</span><span class="tag">CI/CD</span><span class="tag">Jest</span>
+          <span class="tag">Cypress</span><span class="tag">Agile / Scrum</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="credentials">
+      <div class="section-head"><h2>Credentials</h2><div class="rule"></div></div>
+      <ul class="flat-list">
+        <li><span>Graph Developer — Associate</span></li>
+        <li><span>Architecting with Google Compute Engine</span></li>
+        <li><span>Oracle Certified Java Professional</span></li>
+        <li><span>Bachelor of Technology, Jawaharlal Nehru Technological University</span><span class="meta">2011</span></li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <div class="section-head"><h2>Contact</h2><div class="rule"></div></div>
+      <p style="color:var(--muted);max-width:60ch;">Open to full stack and engineering-leadership roles. The fastest way to reach me is email.</p>
+      <div class="contact-row">
+        <a class="primary" href="mailto:sudharshan.ui@gmail.com">Email me</a>
+        <a href="https://linkedin.com/in/sudharshanredyam" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/sudharshanreddyam" target="_blank" rel="noopener">GitHub</a>
+        <a href="resume.pdf" target="_blank" rel="noopener">Download resume (PDF)</a>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Sudharshan Reddyam. Built by hand, hosted on GitHub Pages.
+    </footer>
+  </main>
 </div>
-<div id="footer">
-  <div class="container text-center">
-    <div class="fnav">
-      <p>Copyright &copy; 2018 Sudharshan Redyam.</p>
-    </div>
-  </div>
-</div>
-<script type="text/javascript" src="js/jquery.1.11.1.js"></script> 
-<script type="text/javascript" src="js/bootstrap.js"></script> 
-<script type="text/javascript" src="js/SmoothScroll.js"></script> 
-<script type="text/javascript" src="js/easypiechart.js"></script> 
-<script type="text/javascript" src="js/jquery.prettyPhoto.js"></script> 
-<script type="text/javascript" src="js/jquery.isotope.js"></script> 
-<script type="text/javascript" src="js/jquery.counterup.js"></script> 
-<script type="text/javascript" src="js/waypoints.js"></script> 
-<script type="text/javascript" src="js/jqBootstrapValidation.js"></script> 
-<script type="text/javascript" src="js/contact_me.js"></script> 
-<script type="text/javascript" src="js/main.js"></script>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Theme toggle (persisted per-viewer only; safe no-op if storage blocked)
+  function applyTheme(mode){
+    if(mode === 'light' || mode === 'dark'){
+      document.documentElement.setAttribute('data-theme', mode);
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+    }
+    var label = mode === 'dark' ? 'Switch to light' : 'Switch to dark';
+    var btn1 = document.getElementById('themeToggleDesktop');
+    if(btn1) btn1.textContent = label;
+  }
+  function currentMode(){
+    try { return localStorage.getItem('theme'); } catch(e){ return null; }
+  }
+  function toggleTheme(){
+    var mode = currentMode();
+    var next = mode === 'dark' ? 'light' : (mode === 'light' ? null : 'dark');
+    try {
+      if(next){ localStorage.setItem('theme', next); } else { localStorage.removeItem('theme'); }
+    } catch(e){}
+    applyTheme(next);
+  }
+  try { applyTheme(currentMode()); } catch(e){}
+  var dBtn = document.getElementById('themeToggleDesktop');
+  var mBtn = document.getElementById('themeToggleMobile');
+  if(dBtn) dBtn.addEventListener('click', toggleTheme);
+  if(mBtn) mBtn.addEventListener('click', toggleTheme);
+
+  // Active nav highlight
+  var sections = ['summary','experience','skills','credentials','contact'].map(function(id){
+    return document.getElementById(id);
+  });
+  var links = Array.prototype.slice.call(document.querySelectorAll('#sideNav a'));
+  function onScroll(){
+    var pos = window.scrollY + 120;
+    var activeId = sections[0] ? sections[0].id : null;
+    sections.forEach(function(sec){
+      if(sec && sec.offsetTop <= pos) activeId = sec.id;
+    });
+    links.forEach(function(a){
+      a.classList.toggle('active', a.getAttribute('href') === '#' + activeId);
+    });
+  }
+  document.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+</script>
+
 </body>
 </html>
