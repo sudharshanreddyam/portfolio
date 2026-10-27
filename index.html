@@ -387,7 +387,7 @@
     <section id="summary">
       <div class="section-head"><h2>Summary</h2><div class="rule"></div></div>
       <div class="summary">
-        <p>Full stack engineering leader with experience designing, building, and scaling web platforms across frontend, backend, and cloud layers. Directed a frontend development team of 8 engineers at Walmart and mentored engineers across multiple organizations, while remaining a hands-on individual contributor in architecture, code, and delivery. Deep expertise in TypeScript, React, and Angular on the frontend, paired with Node.js and Java Spring Boot backend systems, RESTful/GraphQL APIs, and event-driven, real-time architectures — Kafka, WebSocket, RabbitMQ — that connect user-facing applications to distributed and third-party systems. Comfortable partnering closely with product, backend, and infrastructure teams, driving the full software development lifecycle in Agile/Scrum environments.</p>
+        <p>Full stack engineering leader with experience designing, building, and scaling web platforms across frontend, backend, and cloud layers. Directed a frontend development team of 8 engineers at Walmart and mentored engineers across multiple organizations, while remaining a hands-on individual contributor in architecture, code, and delivery. Deep expertise in TypeScript, React, and Angular on the frontend, paired with Node.js, Java Spring Boot, and Micronaut backend systems, RESTful/GraphQL APIs, and event-driven, real-time architectures — Kafka, SQS, Artemis, WebSocket, RabbitMQ — that connect user-facing applications to distributed and third-party systems. Enforces delivery quality through policy-as-code governance (OPA), automated end-to-end coverage (Playwright), and full-stack observability (OpenTelemetry, Grafana, Datadog, Splunk), including defining code-quality and review standards for AI-assisted development with GitHub Copilot and MCP-based tooling. Comfortable partnering closely with product, backend, and infrastructure teams, driving the full software development lifecycle in Agile/Scrum environments.</p>
       </div>
     </section>
 
@@ -400,10 +400,13 @@
           <p class="tl-org">Fidelity Investments, Frisco, TX</p>
           <ul>
             <li>Hands-on technical lead on enterprise applications, architecting solutions in Angular 19 and an NX monorepo while guiding frontend standards for the team.</li>
-            <li>Built GraphQL APIs and NestJS/Spring Boot services for B2B partner integrations.</li>
-            <li>Stood up Jenkins/Groovy CI/CD pipelines and Splunk observability dashboards; implemented Kafka for real-time, event-driven messaging.</li>
+            <li>Architected an event-driven ingestion pipeline on Java Micronaut services on AWS EKS: events from Salesforce, SQS, Artemis, and Kafka are consumed, forwarded through internal queues to downstream Micronaut services, and persisted through a CRUD API layer.</li>
+            <li>Enforced policy-as-code (OPA) in delivery pipelines and built end-to-end UI coverage with Playwright, turning manual review gates into automated, enforced standards.</li>
+            <li>Instrumented services with OpenTelemetry and built tracing/performance dashboards in Grafana, Datadog, and Splunk for real-time production observability.</li>
+            <li>Defined code-quality and governance gates — including review and coverage standards for AI-assisted code generated with GitHub Copilot and MCP-based tooling.</li>
+            <li>Built GraphQL APIs and NestJS/Spring Boot services for B2B partner integrations; stood up Jenkins/Groovy CI/CD pipelines across the SDLC.</li>
           </ul>
-          <p class="tl-stack">Angular 19 · NX Monorepo · Java · Spring Boot · NestJS · GraphQL · Kafka · Jenkins · Splunk</p>
+          <p class="tl-stack">Angular 19 · NX Monorepo · Java · Micronaut · Spring Boot · NestJS · GraphQL · AWS EKS · Kafka · SQS · Artemis · OPA · Playwright · OpenTelemetry · Grafana · Datadog · Splunk · Jenkins · GitHub Copilot · MCP</p>
         </div>
 
         <div class="tl-item">
@@ -490,23 +493,50 @@
         <h3>Backend</h3>
         <div class="tags">
           <span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">NestJS</span>
-          <span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">GraphQL</span>
-          <span class="tag">REST APIs</span><span class="tag">Microservices</span>
+          <span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">Micronaut</span>
+          <span class="tag">GraphQL</span><span class="tag">REST APIs</span><span class="tag">Microservices</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Event-driven &amp; messaging</h3>
+        <div class="tags">
+          <span class="tag">Kafka</span><span class="tag">Amazon SQS</span><span class="tag">Apache Artemis</span>
+          <span class="tag">Salesforce Platform Events</span><span class="tag">WebSocket</span><span class="tag">RabbitMQ</span>
         </div>
       </div>
       <div class="skill-group">
         <h3>Data &amp; cloud</h3>
         <div class="tags">
-          <span class="tag">MongoDB</span><span class="tag">MySQL</span><span class="tag">AWS</span>
+          <span class="tag">MongoDB</span><span class="tag">MySQL</span><span class="tag">AWS EKS</span>
           <span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">Firebase</span>
         </div>
       </div>
       <div class="skill-group">
-        <h3>Systems &amp; delivery</h3>
+        <h3>Policy-as-code &amp; governance</h3>
         <div class="tags">
-          <span class="tag">Kafka</span><span class="tag">WebSocket</span><span class="tag">RabbitMQ</span>
-          <span class="tag">Jenkins</span><span class="tag">CI/CD</span><span class="tag">Jest</span>
-          <span class="tag">Cypress</span><span class="tag">Agile / Scrum</span>
+          <span class="tag">OPA (Open Policy Agent)</span><span class="tag">Conftest</span><span class="tag">CI/CD policy gates</span>
+          <span class="tag">Code-quality enforcement</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Observability</h3>
+        <div class="tags">
+          <span class="tag">OpenTelemetry</span><span class="tag">Grafana</span><span class="tag">Datadog</span>
+          <span class="tag">Splunk</span><span class="tag">Distributed tracing</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Testing &amp; delivery</h3>
+        <div class="tags">
+          <span class="tag">Playwright</span><span class="tag">Jest</span><span class="tag">Cypress</span>
+          <span class="tag">Jenkins</span><span class="tag">CI/CD</span><span class="tag">Agile / Scrum</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>AI-assisted engineering</h3>
+        <div class="tags">
+          <span class="tag">GitHub Copilot</span><span class="tag">MCP (Model Context Protocol)</span>
+          <span class="tag">AI-code review standards</span><span class="tag">Coverage-based verification</span>
         </div>
       </div>
     </section>
